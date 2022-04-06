@@ -9,6 +9,6 @@ PyTorch >= 1.3.1
 torchvision >= 0.4.2
 
 # Train
-python train_ddag.py --dataset sysu
+python train_ddag.py --dataset sysu (regdb)
 
 

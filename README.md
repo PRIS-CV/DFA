@@ -11,4 +11,10 @@ torchvision >= 0.4.2
 # Train
 python train_ddag.py --dataset sysu (regdb)
 
+#Contact
 
+Thanks for your attention! If you have any suggestion or question, you can leave a message here or contact us directly:
+
+yinjunhui@bupt.edu.cn
+
+mazhanyu@bupt.edu.cn

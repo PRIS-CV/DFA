@@ -70,8 +70,6 @@ parser.add_argument('--gpu', default='0', type=str,
 parser.add_argument('--mode', default='indoor', type=str, help='all or indoor')
 parser.add_argument('--lambda0', default=1.0, type=float,
                     metavar='lambda0', help='graph attention weights')
-parser.add_argument('--graph', action='store_true', help='either add graph attention or not')
-parser.add_argument('--wpa', action='store_true', help='either add weighted part attention')
 
 args = parser.parse_args()
 os.environ['CUDA_VISIBLE_DEVICES'] = args.gpu
@@ -81,12 +79,12 @@ set_seed(args.seed)
 dataset = args.dataset
 if dataset == 'sysu':
     # TODO: define your data path
-    data_path = '/data/yinjunhui/data/per-id/cross_modalty/'
+    data_path = 'data/per-id/cross_modalty/'
     log_path = args.log_path + 'sysu_log_dfa/'
     test_mode = [1, 2] # infrared to visible
 elif dataset =='regdb':
     # TODO: define your data path for RegDB dataset
-    data_path = '/data/yinjunhui/data/per-id/cross_modalty_Reg-DB/RegDB/'
+    data_path = '/per-id/cross_modalty_Reg-DB/RegDB/'
     log_path = args.log_path + 'regdb_log_dfa/'
     test_mode = [2, 1] # visible to infrared
     
@@ -385,11 +383,7 @@ def test(epoch):
 
     # evaluation
     if dataset == 'regdb':
-        # distmat = np.matmul(query_feat, np.transpose(gall_feat))  #  visible to infrared
-        # distmat_att = np.matmul(query_feat_att, np.transpose(gall_feat_att))
-        # cmc, mAP, mINP = eval_regdb(-distmat, query_label, gall_label)
-        # cmc_att, mAP_att, mINP_att = eval_regdb(-distmat_att, query_label, gall_label)
-        distmat = np.matmul(gall_feat, np.transpose(query_feat))   # infrared to visible
+        distmat = np.matmul(gall_feat, np.transpose(query_feat))
         distmat_att = np.matmul(gall_feat_att, np.transpose(query_feat_att))
         cmc, mAP, mINP = eval_regdb(-distmat, gall_label, query_label)
         cmc_att, mAP_att, mINP_att = eval_regdb(-distmat_att, gall_label, query_label)

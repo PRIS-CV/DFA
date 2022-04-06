@@ -8,6 +8,9 @@ PyTorch >= 1.3.1
 
 torchvision >= 0.4.2
 
+# Requirement
+RegDB and SYSU-MM01 datasets should be downloaded in advance.
+
 # Train
 python train_ddag.py --dataset sysu (regdb)
 

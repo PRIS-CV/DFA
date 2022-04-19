@@ -1,5 +1,5 @@
 # DFA
-Dual-granularity Feature Alignment for Cross-modality Person Re-identification
+Dual-granularity Feature Alignment for Cross-modality Person Re-identification(https://arxiv.org/abs/2104.00226)
 
 # Requirement
 python >= 3.6
